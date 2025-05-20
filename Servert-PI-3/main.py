@@ -3,6 +3,7 @@ import time
 from message_service.message_service import MessageService
 from config.config import user, password, server_ip, port
 from my_logging.log_config import server_logger
+#from main import send_sensor_data
 
 
 def on_message(client, userdata, message):
@@ -24,6 +25,9 @@ def main():
 
     # for testing the message_service
     text_connection(message_service)
+
+    # for testing p4
+    #send_sensor_data(message_service)
 
 
 

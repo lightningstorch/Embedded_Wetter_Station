@@ -2,11 +2,11 @@ import queue
 import time
 from datetime import datetime
 
-from database.database import init_db, store_data
-from dataclasses.dataclass_models import MeasuredData
+from server_pi3.database.database import init_db, store_data
+from server_pi3.dataclass.dataclass_models import MeasuredData
 from message_service.message_service import MessageService
-from config.config import user, password, server_ip, port
-from my_logging.log_config import server_logger
+from server_pi3.config.config import user, password, server_ip, port
+from server_pi3.my_logging.log_config import server_logger
 
 message_service_queue = queue.Queue()
 
@@ -18,7 +18,8 @@ def subscribe_pis(message_service):
     message_service.subscribe(on_message, topic="sensors/pi4", qos=1)
     message_service.subscribe(on_message, topic="sensors/zero", qos=1)
 
-def main():
+def server_main():
+    print("Starting the server...")
     
     # init MQTT client
     message_service = MessageService(server_logger, user=user, password=password, server_ip=server_ip, port=int(port))
@@ -51,13 +52,10 @@ def main():
             # save the data in DB
             store_data(values)
 
-            # send it to the MQTT broker for UI visualization
+            # send it to the MQTT broker for ui visualization
             message_service.publish(topic="ui/sensor_data", payload=payload.model_dump_json(), qos=1)
 
     except KeyboardInterrupt:
         print("Shutdown the program")
     finally:
         message_service.close()
-
-if __name__ == "__main__":
-    main()

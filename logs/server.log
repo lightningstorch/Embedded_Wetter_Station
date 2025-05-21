@@ -1,0 +1,24 @@
+2025-05-20 11:46:21,014 - server - INFO - Initialise the Connection to the MQTT-Broker 192.168.8.205:1883
+2025-05-20 11:46:21,042 - server - DEBUG - Topic 'sensors/pi4' is subscribed with a own callback function on_message
+2025-05-20 11:46:21,042 - server - DEBUG - Topic 'sensors/zero' is subscribed with a own callback function on_message
+2025-05-20 11:46:21,061 - server - DEBUG - Connection ist established
+2025-05-20 11:46:21,544 - server - DEBUG - Message sent to sensors/pi4: This is the channel for pi4
+2025-05-20 11:46:21,544 - server - DEBUG - Message sent to sensors/zero: This is the channel for zero
+2025-05-20 11:46:49,573 - server - INFO - Initialise the Connection to the MQTT-Broker 192.168.8.205:1883
+2025-05-20 11:46:49,607 - server - DEBUG - Connection ist established
+2025-05-20 11:46:49,607 - server - DEBUG - Topic 'sensors/pi4' is subscribed with a own callback function on_message
+2025-05-20 11:46:49,608 - server - DEBUG - Topic 'sensors/zero' is subscribed with a own callback function on_message
+2025-05-20 11:46:50,109 - server - DEBUG - Message sent to sensors/pi4: This is the channel for pi4
+2025-05-20 11:46:50,109 - server - DEBUG - Message sent to sensors/zero: This is the channel for zero
+2025-05-20 11:51:51,530 - server - INFO - Initialise the Connection to the MQTT-Broker 192.168.8.205:1883
+2025-05-20 11:51:51,554 - server - DEBUG - Topic 'sensors/pi4' is subscribed with a own callback function on_message
+2025-05-20 11:51:51,555 - server - DEBUG - Topic 'sensors/zero' is subscribed with a own callback function on_message
+2025-05-20 11:51:51,557 - server - DEBUG - Connection ist established
+2025-05-20 11:51:52,056 - server - DEBUG - Message sent to sensors/pi4: This is the channel for pi4
+2025-05-20 11:51:52,056 - server - DEBUG - Message sent to sensors/zero: This is the channel for zero
+2025-05-20 12:00:59,645 - server - INFO - Initialise the Connection to the MQTT-Broker 192.168.8.205:1883
+2025-05-20 12:00:59,682 - server - DEBUG - Topic 'sensors/pi4' is subscribed with a own callback function on_message
+2025-05-20 12:00:59,683 - server - DEBUG - Connection ist established
+2025-05-20 12:00:59,683 - server - DEBUG - Topic 'sensors/zero' is subscribed with a own callback function on_message
+2025-05-20 12:01:00,184 - server - DEBUG - Message sent to sensors/pi4: This is the channel for pi4
+2025-05-20 12:01:00,184 - server - DEBUG - Message sent to sensors/zero: This is the channel for zero

@@ -3,9 +3,9 @@ import json
 import time
 
 import pi4_logging
-from dataclasses.dataclass_models import SensorData
+from pi4.dataclass.dataclass_models import SensorData
 from message_service.message_service import MessageService
-from config.config import user, password, server_ip, port
+from pi4.config.config import user, password, server_ip, port
 
 # Initialize the SenseHat
 sense = SenseHat()
@@ -40,7 +40,7 @@ def light_level_callback(client, userdata, message):
         sense.low_light = True
 
 
-def main():
+def pi4_main():
 
     message_service = MessageService(user=user, password=password, server_ip=server_ip, port=int(port), logging=pi4_logging)
 

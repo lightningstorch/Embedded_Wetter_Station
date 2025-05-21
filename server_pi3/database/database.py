@@ -1,10 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from config.config import database_connection
-from database.models import Base, Data
-from dataclasses.dataclass_models import MeasuredData
-from my_logging.log_config import server_logger
+from server_pi3.config.config import database_connection
+from server_pi3.database.models import Base, Data
+from server_pi3.dataclass.dataclass_models import MeasuredData
+from server_pi3.my_logging.log_config import server_logger
 
 engine = create_engine(
     database_connection,

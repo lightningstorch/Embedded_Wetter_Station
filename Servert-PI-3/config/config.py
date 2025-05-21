@@ -14,4 +14,8 @@ port = _config['mqtt']['port']
 user = _config['mqtt']['user']
 password = _config['mqtt']['password']
 
+database_type = _config['database']['type']
+database_connection = _config['database']['connection_string']
+
+
 

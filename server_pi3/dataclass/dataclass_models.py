@@ -1,13 +1,15 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
 
 class MeasuredData(BaseModel):
+    client: str
     time: datetime
     temperature: float
     humidity: float
     pressure: float
-    light_level: float = None
+    light_level: Optional[float] = None
 
 

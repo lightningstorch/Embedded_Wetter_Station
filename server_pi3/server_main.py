@@ -1,3 +1,4 @@
+import json
 import queue
 import time
 from datetime import datetime
@@ -13,10 +14,16 @@ message_service_queue = queue.Queue()
 def on_message(client, userdata, message):
     payload = message.payload.decode()
     message_service_queue.put(payload)
+    server_logger.info(f"Received message: {payload}")
+    print(f"Received message: {payload}")
 
 def subscribe_pis(message_service):
     message_service.subscribe(on_message, topic="sensors/pi4", qos=1)
     message_service.subscribe(on_message, topic="sensors/zero", qos=1)
+
+def light(message_service, payload):
+    message_service.publish(topic="sensors/pi4_light", payload=payload, qos=1)
+
 
 def server_main():
     print("Starting the server...")
@@ -38,10 +45,11 @@ def server_main():
                 continue
 
             # get the message from the queue
-            payload = message_service_queue.get()
+            payload = json.loads(message_service_queue.get())
 
             # process the message
             values = MeasuredData(
+                client=payload.get("client"),
                 time=datetime.now(),
                 temperature=payload.get("temperature"),
                 humidity=payload.get("humidity"),
@@ -53,7 +61,8 @@ def server_main():
             store_data(values)
 
             # send it to the MQTT broker for ui visualization
-            message_service.publish(topic="ui/sensor_data", payload=payload.model_dump_json(), qos=1)
+            send_values = values.model_dump_json()
+            message_service.publish(topic="ui/sensor_data", payload=send_values, qos=1)
 
     except KeyboardInterrupt:
         print("Shutdown the program")

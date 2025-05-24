@@ -47,15 +47,35 @@ def server_main():
             # get the message from the queue
             payload = json.loads(message_service_queue.get())
 
-            # process the message
-            values = MeasuredData(
-                client=payload.get("client"),
-                time=datetime.now(),
-                temperature=payload.get("temperature"),
-                humidity=payload.get("humidity"),
-                pressure=payload.get("pressure"),
-                light_level=payload.get("light_level", None),
-            )
+            values = None
+
+            if payload.get("client") is "pi4":
+                # process the message
+                values = MeasuredData(
+                    client=payload.get("client"),
+                    time=datetime.now(),
+                    temperature=payload.get("temperature"),
+                    humidity=payload.get("humidity"),
+                    pressure=payload.get("pressure"),
+                )
+
+            elif payload.get("client") is "zero":
+                # process the message
+                values = MeasuredData(
+                    client=payload.get("client"),
+                    time=datetime.now(),
+                    temperature=payload.get("temperature"),
+                    pressure=payload.get("pressure"),
+                    light_level=payload.get("light_level"),
+                )
+
+                match values.light_level:
+                    case range(0, 50):
+                        light(message_service, "light on")
+                    case range(50, 150):
+                        light(message_service, "light on low")
+                    case _ if values.light_level >= 150:
+                        light(message_service, "light off")
 
             # save the data in DB
             store_data(values)

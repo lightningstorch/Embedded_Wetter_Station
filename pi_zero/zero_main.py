@@ -5,13 +5,15 @@ from pi_zero.config.config import user, password, server_ip, port
 from pi_zero.dataclass.dataclass_models import SensorData
 from pi_zero.zero_logging.log_config import zero_logger
 
+from envirophat import weather, light
+
 
 
 def hat_data():
 
-    temp = 25.5
-    pressure = 1013.25
-    light_level = 10
+    temp = weather.temperature()
+    pressure = weather.pressure()
+    light_level = light.light()
 
     values = SensorData(
         client="zero",
@@ -31,7 +33,7 @@ def zero_main():
             payload = hat_data()
 
             # Send sensor data
-            message_service.publish(topic="sensors/pi4", payload=payload.model_dump_json(), qos=1)
+            message_service.publish(topic="sensors/zero", payload=payload.model_dump_json(), qos=1)
 
             time.sleep(5)
 

@@ -8,8 +8,8 @@ class MeasuredData(BaseModel):
     client: str
     time: datetime
     temperature: float
-    humidity: float
     pressure: float
+    humidity: Optional[float] = None
     light_level: Optional[float] = None
 
 

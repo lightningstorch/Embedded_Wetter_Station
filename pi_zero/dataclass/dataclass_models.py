@@ -1,9 +1,11 @@
-from pydantic import BaseModel
+from dataclasses import dataclass, asdict
 
-
-class SensorData(BaseModel):
+@dataclass
+class SensorData:
     """Dataclass for sensor data."""
     client: str
-    temperature: float
-    pressure: float
-    light_level: float
+    brightness: float
+
+    def to_json(self) -> str:
+        import json
+        return json.dumps(asdict(self))

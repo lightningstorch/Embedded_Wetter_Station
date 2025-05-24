@@ -10,16 +10,11 @@ from envirophat import weather, light
 
 
 def hat_data():
-
-    temp = weather.temperature()
-    pressure = weather.pressure()
-    light_level = light.light()
+    brightness = light.light()
 
     values = SensorData(
         client="zero",
-        temperature=temp,
-        pressure=pressure,
-        light_level=light_level
+        brightness=brightness
     )
 
     return values
@@ -33,7 +28,7 @@ def zero_main():
             payload = hat_data()
 
             # Send sensor data
-            message_service.publish(topic="sensors/zero", payload=payload.model_dump_json(), qos=1)
+            message_service.publish(topic="sensors/zero", payload=payload.to_json(), qos=1)
 
             time.sleep(5)
 

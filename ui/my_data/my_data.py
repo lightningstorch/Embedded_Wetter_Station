@@ -4,8 +4,13 @@ from pydantic import BaseModel
 
 
 class SensorData(BaseModel):
-    temp: Optional[float] = None
-    hum: Optional[float] = None
+    temperature: Optional[float] = None
+    humidity: Optional[float] = None
+    pressure: Optional[float] = None
     brightness: Optional[float] = None
-    # camera_frame: Optional[float] = None
+
+
+class ToggleLight(BaseModel):
+    client: str
+    toggle: bool = True
 

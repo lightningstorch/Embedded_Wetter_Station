@@ -68,4 +68,4 @@ def app():
         if data.pressure is not None:
             pressure_box.metric("🌪️ Luftdruck", f"{data.pressure:.1f} PA")
         if data.brightness is not None:
-            light_box.metric("🔆 Helligkeit", f"{data.brightness:.1f} lx")
+            light_box.metric("🔆 Helligkeit", f"{data.brightness:.1f} lux")

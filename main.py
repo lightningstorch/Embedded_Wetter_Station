@@ -1,9 +1,9 @@
 
 def main():
-    #program = "server_main"
+    program = "server_main"
     #program = "pi4_main"
     #program = "zero_main"
-    program = "ui_main"
+    #program = "ui_main"
 
     match program:
         case "pi4_main":

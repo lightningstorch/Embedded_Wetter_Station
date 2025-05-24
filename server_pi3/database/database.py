@@ -30,7 +30,7 @@ def store_data(data: MeasuredData):
             temperature=data.temperature,
             humidity=data.humidity,
             pressure=data.pressure,
-            light_level=data.light_level
+            brightness=data.brightness
         )
         session.add(new_data)
 

@@ -41,6 +41,7 @@ def server_main():
     # variables
     light_on = False
     switch_from_ui = False
+    values = None
 
     try:
         while True:
@@ -52,7 +53,7 @@ def server_main():
             # get the message from the queue
             payload = json.loads(message_service_queue.get())
 
-            values = None
+
             if payload.get("client") == "ui":
                 if light_on:
                     # turn light off

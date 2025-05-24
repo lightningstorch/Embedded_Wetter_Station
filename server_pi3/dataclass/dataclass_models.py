@@ -7,9 +7,9 @@ from pydantic import BaseModel
 class MeasuredData(BaseModel):
     client: str
     time: datetime
-    temperature: float
-    pressure: float
+    temperature: Optional[float] = None
+    pressure: Optional[float] = None
     humidity: Optional[float] = None
-    light_level: Optional[float] = None
+    brightness: Optional[float] = None
 
 

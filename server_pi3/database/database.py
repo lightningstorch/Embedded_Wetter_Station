@@ -25,6 +25,7 @@ def store_data(data: MeasuredData):
     try:
         # Create a new data object
         new_data = Data(
+            client=data.client,
             time=data.time,
             temperature=data.temperature,
             humidity=data.humidity,

@@ -9,6 +9,8 @@ This file contains the complete license texts of all open source libraries used 
 1. [Paho MQTT 2.1.0 (MIT)](#paho-mqtt-210-bsd-3--epl-20)
 2. [SQLAlchemy 2.0.40 (MIT)](#sqlalchemy-2040-mit)
 3. [pydantic 2.11.4 (MIT)](#pydantic-2114-mit)
+4. [steamlit 1.45.1 (APACHE-2.0)](#steamlit-1451-apache-20)
+5. [setuptools 80.8.0 (MIT)](#setuptools-8080-mit)
 
 
 ---
@@ -110,4 +112,44 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+### steamlit 1.45.1 (APACHE-2.0)
+**Source:** [https://github.com/streamlit/streamlit?tab=Apache-2.0-1-ov-file](https://github.com/streamlit/streamlit?tab=Apache-2.0-1-ov-file)<br>
+**License:** Apache License (SPDX: 'Apache') <br>
+**Original License Text:** [raw LICENSE](licenses/steamlit-1.45.1-LICENSE.txt)
+
+```text
+                                Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+more in the file under the Link above.
+```
+
+### setuptools 80.8.0 (MIT)
+**Source:** [https://github.com/pypa/setuptools](https://github.com/pypa/setuptools)<br>
+**License:** MIT License (SPDX: 'MIT') <br>
+**Original License Text:** [raw LICENSE](licenses/setuptools-80.8.0-LICENSE.txt)
+
+```text
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
 ```

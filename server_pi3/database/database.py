@@ -23,7 +23,7 @@ def store_data(data: MeasuredData):
     session = Session()
 
     try:
-        # Create a new data object
+        # Create a new my_data object
         new_data = Data(
             client=data.client,
             time=data.time,
@@ -50,7 +50,7 @@ def get_data(start_time, end_time):
     session = Session()
 
     try:
-        # Query the data from the database
+        # Query the my_data from the database
         data = (session.
                 query(Data)
                 .filter(Data.date.between(start_time, end_time))

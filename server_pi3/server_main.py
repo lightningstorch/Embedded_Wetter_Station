@@ -57,7 +57,7 @@ def server_main():
                 light_level=payload.get("light_level", None),
             )
 
-            # save the data in DB
+            # save the my_data in DB
             store_data(values)
 
             # send it to the MQTT broker for ui visualization

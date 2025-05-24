@@ -11,6 +11,8 @@ from pi4.pi4_logging.log_config import pi4_logger
 # Initialize the SenseHat
 sense = SenseHat()
 
+light_on = False
+
 def sensor_data():
     while True:
         temp = round(sense.get_temperature(),2)
@@ -29,16 +31,34 @@ def sensor_data():
 
 def light_level_callback(client, userdata, message):
     payload = message.payload.decode()
+    global light_on
 
     if payload == "light on":
         sense.low_light = False
         sense.clear(255, 255, 255)
+        light_on = True
     elif payload == "light off":
         sense.low_light = False
         sense.clear(0, 0, 0)
+        light_on = False
     elif payload == "light on low":
         sense.low_light = True
         sense.clear(255, 255, 255)
+        light_on = True
+    elif payload == "toggle_light":
+        if light_on:
+            # turn light off
+            light_on = False
+            sense.low_light = False
+            sense.clear(0, 0, 0)
+        else:
+            # turn light on
+            light_on = True
+            sense.low_light = False
+            sense.clear(255, 255, 255)
+
+
+
 
 
 def pi4_main():
@@ -50,10 +70,10 @@ def pi4_main():
 
     try:
         while True:
-            # get sensor data
+            # get sensor my_data
             payload = sensor_data()
 
-            # Send sensor data
+            # Send sensor my_data
             message_service.publish(topic="sensors/pi4", payload=payload.model_dump_json(), qos=1)
 
             time.sleep(5)

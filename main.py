@@ -1,9 +1,9 @@
 
 def main():
-    program = "server_main"
+    #program = "server_main"
     #program = "pi4_main"
     #program = "zero_main"
-    #program = "ui_main"
+    program = "ui_main"
 
     match program:
         case "pi4_main":
@@ -16,8 +16,8 @@ def main():
             from pi_zero.zero_main import zero_main
             zero_main()
         case "ui_main":
-            from ui.ui_main import ui_main
-            ui_main()
+            from ui.app import app
+            app()
         case _:
             print("Program not found")
 

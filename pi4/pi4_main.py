@@ -2,7 +2,6 @@ from sense_hat import SenseHat
 import json
 import time
 
-
 from pi4.dataclass.dataclass_models import SensorData
 from message_service.message_service import MessageService
 from pi4.config.config import user, password, server_ip, port
@@ -14,19 +13,18 @@ sense = SenseHat()
 light_on = False
 
 def sensor_data():
-    while True:
-        temp = round(sense.get_temperature(),2)
-        humidity = round(sense.get_humidity(),2)
-        pressure = round(sense.get_pressure(),2)
+    temp = round(sense.get_temperature(),2)
+    humidity = round(sense.get_humidity(),2)
+    pressure = round(sense.get_pressure(),2)
 
-        payload = SensorData(
-            client="pi4",
-            temperature=temp,
-            humidity=humidity,
-            pressure=pressure
-        )
+    payload = SensorData(
+        client="pi4",
+        temperature=temp,
+        humidity=humidity,
+        pressure=pressure
+    )
 
-        return payload
+    return payload
 
 
 def light_level_callback(client, userdata, message):

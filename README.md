@@ -124,7 +124,7 @@ Streamlit-App starten
 streamlit run main.py
 
 ## License
-sind in https://github.com/lightningstorch/Embedded_Wetter_Station/licenses
+sind in https://github.com/lightningstorch/Embedded_Wetter_Station/tree/main/licenses 
 
 ## Contact and Contributors
 Manuel Spiss - https://github.com/lightningstorch <br>

@@ -46,7 +46,8 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 
 
 ## Installation
-Vorbereitung: Alle Raspberry Pis müssen mit Raspberry Pi OS aufgesetzt sein. Auf die Outdoor-Module (Pi 4 & Pi Zero) kommt dieselbe Python-Umgebung, das UI läuft idealerweise auf  Notebook/PC. Alle Geräte sollten im selben Netzwerk sein.
+Vorbereitung: 
+Alle Raspberry Pis müssen mit Raspberry Pi OS aufgesetzt sein. Auf die Outdoor-Module (Pi 4 & Pi Zero) kommt dieselbe Python-Umgebung, das UI läuft idealerweise auf  Notebook/PC. Alle Geräte sollten im selben Netzwerk sein.
 
 Das Repository klonen
 git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
@@ -123,7 +124,7 @@ Streamlit-App starten
 streamlit run main.py
 
 ## License
-sind in 
+sind in https://github.com/lightningstorch/Embedded_Wetter_Station/licenses
 
 ## Contact and Contributors
 Manuel Spiss - https://github.com/lightningstorch <br>

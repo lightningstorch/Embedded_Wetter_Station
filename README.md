@@ -33,19 +33,97 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 
 
 ## Software Components
+| Betriebssystem                              | Beschreibung
 
+|.............................................|..............................................................................................................................................................:
+| Rasberry PI OS                               | 32-Bit, Lite oder Desktop
+| Programmiersprache                            | Python 3.9+ 
+| Bibliotheken                                 | paho-mqtt(Client), adafruit-circuitpython-dht, sense-                                                  hat (für Sense HAT), envirophat, streamlit (für das                                                     UI), pydantic (für Typen/Modelle im UI),sqlite3 für                                                     Datenbank
+|MQTT                                          | Mosquitto (Broker, Version ≥ 2.0), Konfiguration                                                       erfolgt standardmäßig unter           
+                                                 /etc/mosquitto/mosquitto.conf, sensor/outdoor1 (Sense                                                   HAT), sensor/outdoor2 (Enviro pHat),     
+                                                   ui/sensor_data(gebündelt, für UI), 
+                                                   sensors/light(Steurung für Licht) 
 
 
 ## Installation
+Vorbereitung: Alle Raspberry Pis müssen mit Raspberry Pi OS aufgesetzt sein. Auf die Outdoor-Module (Pi 4 & Pi Zero) kommt dieselbe Python-Umgebung, das UI läuft idealerweise auf  Notebook/PC. Alle Geräte sollten im selben Netzwerk sein.
 
+Das Repository klonen
+git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
+cd Embedded_Wetter_Station
+
+Update und Mosquitto installieren 
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3-pip python3-venv mosquitto -y
+
+Virtuelle Umgebung und alles nötige Installieren
+
+RPI 4 + Sense HAT
+cd pi4
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+RPI Zero + Enviro pHAT
+cd ../pi_zero
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+RPI Zero + Relais
+cd ../light_control
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+Streamlit-U
+cd ../ui
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r ../requirements.txt
+
+Mosquitto-Broker konfigurieren
+listener 1883
+allow_anonymous true
+
+
+Mosquitto aktivieren und starten
+sudo systemctl enable mosquitto
+sudo systemctl restart mosquitto
 
 
 ## Usage
+Mosquitto-Broker starten
+sudo systemctl start mosquitto
+mosquitto -v
 
+Outdoor-Sensoren starten
+cd ~/Embedded_Wetterstation/pi4
+source venv/bin/activate
+python pi4_main.py
 
+ Outdoor 2 (RPI Zero + Enviro pHAT
+ cd ~/Embedded_Wetterstation/pi_zero
+source venv/bin/activate
+python zero_main.py
+
+Lichtsteuerung (RPI Zero)
+cd ~/Embedded_Wetterstation/light_control
+source venv/bin/activate
+python light_control.py
+
+Streamlit-UI starten
+cd ~/Embedded_Wetterstation
+
+Streamlit-App starten
+streamlit run main.py
 
 ## License
-
+sind in 
 
 ## Contact and Contributors
 Manuel Spiss - https://github.com/lightningstorch <br>

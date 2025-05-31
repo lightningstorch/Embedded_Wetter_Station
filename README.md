@@ -41,59 +41,171 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 | Bibliotheken          | paho-mqtt (Client)<br>adafruit-circuitpython-dht<br>sense-hat (für Sense HAT)<br>envirophat<br>streamlit (für das UI)<br>pydantic (für Typen/Modelle im UI)<br>sqlite3 (für Datenbank) |
 | MQTT                  | Mosquitto (Broker, Version ≥ 2.0)<br>Konfiguration unter `/etc/mosquitto/mosquitto.conf`<br>`sensor/outdoor1` (Sense HAT)<br>`sensor/outdoor2` (Enviro pHAT)<br>`ui/sensor_data` (gebündelt, für UI)<br>`sensors/light` (Steuerung für Licht) |
 
-
+---
 
 ## Installation
 Vorbereitung: 
-Alle Raspberry Pis müssen mit Raspberry Pi OS aufgesetzt sein. Auf die Outdoor-Module (Pi 4 & Pi Zero) kommt dieselbe Python-Umgebung, das UI läuft idealerweise auf  Notebook/PC. Alle Geräte sollten im selben Netzwerk sein.
+Alle Raspberry Pis müssen mit einem Kompatiblen Linux Betriebssystem (Raspberry Pi OS) aufgesetzt sein. <br>
+Die Outdoor-Module (Pi 4 & Pi Zero) benötigen die aktuelle Python 3.13 Version. <br>
+UI läuft idealerweise auf einem Notebook oder PC.  <br>
+Damit alle Geräte miteinander kommunizieren können, müssen sie sich im selben Netzwerk befinden. <br>
 
-Das Repository klonen
+
+### Installation Raspberry Server (RPI 3)
+Für den Raspberry Pi Server wird ein MQTT-Broker (Mosquitto) benötigt,  <br>
+um die Daten der Outdoor-Sensoren zu empfangen/senden und an die UI weiterzuleiten. <br>
+Die Client-Software (Paho MQTT) müssen mit einem Usernamen und Passwort am Broker angemeldet werden. <br>
+Link zu [Installation Mosquitto](https://mosquitto.org/download/)
+
+Für pip muss eine virtuelle Umgebung erstellt werden, um die Abhängigkeiten zu installieren.
+```text
+sudo apt-get update
+sudo apt-get install python3-venv
+sudo apt-get install python3-pip
+python3 -m venv --system-site-packages ~/server-venv
+```
+nun müssen wir die virtuelle Umgebung aktivieren
+```text
+source ~/server-venv/bin/activate
+```
+
+Nun können wir die Abhängigkeiten installieren.
+```text
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Nun kann das Reposiroty geklont werden
+````text
+sudo apt install git
+git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
+````
+
+Die Main-Datei muss bearbeitet werden und "program = "server_main"" aktiviert werden.
+```text
+sudo nano ~/Embedded_Wetter_Station/main.py
+```
+Bearbeiten und speichern (Strg + O, Enter, Strg + X)
+
+Nun kann das Programm gestartet werden
+```text
+python3 ~/Embedded_Wetter_Station/main.py
+```
+
+
+### Installation Raspberry Sense-HAT (RPI 4)
+Für den Raspberry Pi 4 wird der Sense HAT benötigt, um die Daten der Outdoor-Sensoren zu erfassen. <br>
+Diese Software muss direkt auf dem OS installiert werden.
+```text
+sudo apt-get install sense-hat python3-sense-hat
+```
+
+Für pip muss eine virtuelle Umgebung erstellt werden, um die Abhängigkeiten zu installieren.
+```text
+sudo apt-get update
+sudo apt-get install python3-pip
+sudo apt-get install python3-venv
+python3 -m venv --system-site-packages ~/sense-hat-venv
+```
+nun müssen wir die virtuelle Umgebung aktivieren
+```text
+source ~/sense-hat-venv/bin/activate
+```
+
+Nun können wir die Abhängigkeiten installieren
+```text
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Nun kann das Reposiroty geklont werden
+````text
 git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
 cd Embedded_Wetter_Station
+````
 
-Update und Mosquitto installieren 
-sudo apt update && sudo apt upgrade -y
-sudo apt install python3-pip python3-venv mosquitto -y
+Die Main-Datei muss bearbeitet werden und "program = "pi4_main"" aktiviert werden.
+```text
+sudo nano ~/Embedded_Wetter_Station/main.py
+```
+Bearbeiten und speichern (Strg + O, Enter, Strg + X)
 
-Virtuelle Umgebung und alles nötige Installieren
+Nun kann das Programm gestartet werden
+```text
+python3 ~/Embedded_Wetter_Station/main.py
+```
 
-RPI 4 + Sense HAT
-cd pi4
-python3 -m venv venv
-source venv/bin/activate
+
+### Installation Raspberry Enviro pHAT (RPI Zero)
+Für den Raspberry Pi Zero (V1) wird der Sense HAT benötigt, um die Daten der Outdoor-Sensoren zu erfassen. <br>
+Diese Software muss direkt auf dem OS installiert werden.
+```text
+sudo apt-get install sense-hat python3-sense-hat
+```
+
+Für pip muss eine virtuelle Umgebung erstellt werden, um die Abhängigkeiten zu installieren.
+```text
+sudo apt-get update
+sudo apt-get install python3-venv
+sudo apt-get install python3-pip
+sudo apt-get install python3-dev
+sudo apt-get install i2c-tools
+python3 -m venv --system-site-packages ~/envirophat-venv
+```
+nun müssen wir die virtuelle Umgebung aktivieren
+```text
+source ~/envirophat-venv/bin/activate
+```
+
+Nun können wir die Abhängigkeiten installieren. Der Raspberry pi Zero (V1) <br> 
+schafft die installation von pydantic nicht, daher müssen alle pakete händisch installiert werden.
+```text
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install paho-mqtt
+pip install envirophat
+```
 
-RPI Zero + Enviro pHAT
-cd ../pi_zero
-python3 -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
+Nun kann das Reposiroty geklont werden
+````text
+sudo apt install git
+git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
+````
 
-RPI Zero + Relais
-cd ../light_control
-python3 -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
+Die Main-Datei muss bearbeitet werden und "program = "zero_main"" aktiviert werden.
+```text
+sudo nano ~/Embedded_Wetter_Station/main.py
+```
+Bearbeiten und speichern (Strg + O, Enter, Strg + X)
 
-Streamlit-U
-cd ../ui
-python3 -m venv venv
-source venv/bin/activate
-pip install --upgrade pip
-pip install -r ../requirements.txt
-
-Mosquitto-Broker konfigurieren
-listener 1883
-allow_anonymous true
+Nun kann das Programm gestartet werden
+```text
+python3 ~/Embedded_Wetter_Station/main.py
+```
 
 
-Mosquitto aktivieren und starten
-sudo systemctl enable mosquitto
-sudo systemctl restart mosquitto
+### Installation UI (Streamlit)
+Für die UI wird Streamlit benötigt, um die Daten der Outdoor-Sensoren anzuzeigen. <br>
+Die benötigten Pakete müssen mit pip installiert werden. <br>
+```text
+pip install streamlit
+pip install pydantic
+pip install paho-mqtt
+```
 
+Danach kann das Reposiroty geklont werden
+````text
+git clone https://github.com/DeinGitHubUsername/Embedded_Wetter_Station.git
+cd Embedded_Wetter_Station
+````
+Die Main-Datei muss bearbeitet werden und "program = "ui_main"" aktiviert werden.
+Das Bearbeiten kann in einem Texteditor erfolgen.
+
+Danach muss nur noch die Streamlit-App gestartet werden.
+```text
+streamlit run main.py
+```
+
+---
 
 ## Usage
 Mosquitto-Broker starten
@@ -120,6 +232,8 @@ cd ~/Embedded_Wetterstation
 
 Streamlit-App starten
 streamlit run main.py
+
+---
 
 ## License
 © 2025 Manuel Spiss, Mario Howegger und Daniel Rockenschaub.  

@@ -11,7 +11,8 @@ These communicate with an MQTT broker.
 4. [Installation](#installation)
 5. [Usage](#usage)
 7. [License](#license)
-8. [Contact and Contributors](#contact-and-contributors)
+8. [Third-Party-License](#third-party-license)
+9. [Contact and Contributors](#contact-and-contributors)
 
 ---
 
@@ -121,7 +122,11 @@ Streamlit-App starten
 streamlit run main.py
 
 ## License
-sind in https://github.com/lightningstorch/Embedded_Wetter_Station/tree/main/licenses 
+© 2025 Manuel Spiss, Mario Howegger und Daniel Rockenschaub.  
+This project is licensed under the [NAME DER LIZENZ] License. Further details on licensing can be found in the [LICENSE](LICENSE) file.
+
+### Third-Party-License
+This project uses libraries and dependencies that are each subject to their own licenses. In order to comply with these license conditions, the corresponding license texts must be provided. A complete overview of all third-party licenses can be found in [THIRD_PARTY_LICENSES.md](https://github.com/lightningstorch/Embedded_Wetter_Station/blob/main/THIRD_PARTY_LICENSES.md).
 
 ## Contact and Contributors
 Manuel Spiss - https://github.com/lightningstorch <br>

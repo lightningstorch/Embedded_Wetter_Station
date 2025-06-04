@@ -72,7 +72,10 @@ source ~/server-venv/bin/activate
 Nun können wir die Abhängigkeiten installieren.
 ```text
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install paho-mqtt
+pip install pydantic
+pip install systemtools
+pip install SQLAlchemy
 ```
 
 Nun kann das Reposiroty geklont werden
@@ -115,7 +118,10 @@ source ~/sense-hat-venv/bin/activate
 Nun können wir die Abhängigkeiten installieren
 ```text
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install paho-mqtt
+pip install pydantic
+pip install flask
+pip install opencv-python
 ```
 
 Nun kann das Reposiroty geklont werden
@@ -190,6 +196,8 @@ Die benötigten Pakete müssen mit pip installiert werden. <br>
 pip install streamlit
 pip install pydantic
 pip install paho-mqtt
+pip install flask
+pip install opencv-python
 ```
 
 Danach kann das Reposiroty geklont werden

@@ -1,10 +1,7 @@
 import json
 import time
 from queue import Queue
-
 import streamlit as st
-import paho.mqtt.client as mqtt
-from streamlit.testing.v1.element_tree import Toggle
 
 from message_service.message_service import MessageService
 from ui.my_data.my_data import SensorData, ToggleLight
@@ -43,6 +40,14 @@ def app():
     pressure_box = st.empty()
     light_box = st.empty()
     img_box = st.empty()
+
+    # Webcam
+    img_box.markdown(
+        '''
+        <img src="http://192.168.8.236:5000/video_feed" width="640" height="480" alt="Webcam Feed">
+        ''',
+        unsafe_allow_html=True
+    )
 
 
     if button_col1.button("💡 Lampe an/aus"):

@@ -1,7 +1,9 @@
+import threading
 from sense_hat import SenseHat
 import json
 import time
 
+from pi4.api import app
 from pi4.dataclass.dataclass_models import SensorData
 from message_service.message_service import MessageService
 from pi4.config.config import user, password, server_ip, port
@@ -38,8 +40,12 @@ def light_level_callback(client, userdata, message):
         sense.low_light = True
         sense.clear(255, 255, 255)
 
+def run_cam():
+    app.run(host='0.0.0.0', port=5000)
 
 def pi4_main():
+    cam = threading.Thread(target=run_cam, daemon=True)
+    cam.start()
 
     message_service = MessageService(user=user, password=password, server_ip=server_ip, port=int(port), logging=pi4_logger)
 

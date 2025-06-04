@@ -208,31 +208,33 @@ streamlit run main.py
 ---
 
 ## Usage
-Mosquitto-Broker starten
+
+### Start the MQTT Broker & Server 
+```text
 sudo systemctl start mosquitto
-mosquitto -v
+source ~/server-venv/bin/activate
+python3 ~/Embedded_Wetter_Station/main.py
+```
 
-Outdoor-Sensoren starten
-cd ~/Embedded_Wetterstation/pi4
-source venv/bin/activate
-python pi4_main.py
+### Outdoor Sensors
 
- Outdoor 2 (RPI Zero + Enviro pHAT
- cd ~/Embedded_Wetterstation/pi_zero
-source venv/bin/activate
-python zero_main.py
+#### Raspberry Pi 4 (Sense HAT)  
+```text
+source ~/sense-hat-venv/bin/activate
+python3 ~/Embedded_Wetter_Station/main.py
+```
 
-Lichtsteuerung (RPI Zero)
-cd ~/Embedded_Wetterstation/light_control
-source venv/bin/activate
-python light_control.py
+#### Raspberry Pi Zero (Enviro pHAT)  
+```text
+source ~/envirophat-venv/bin/activate
+python3 ~/Embedded_Wetter_Station/main.py
+```
 
-Streamlit-UI starten
-cd ~/Embedded_Wetterstation
-
-Streamlit-App starten
+### Streamlit UI  
+```text
+cd ~/Embedded_Wetter_Station
 streamlit run main.py
-
+```
 ---
 
 ## License

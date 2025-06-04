@@ -10,6 +10,7 @@ from server_pi3.config.config import user, password, server_ip, port
 from server_pi3.my_logging.log_config import server_logger
 
 message_service_queue = queue.Queue()
+light_intensity = 100
 
 def on_message(client, userdata, message):
     payload = message.payload.decode('utf-8')
@@ -28,6 +29,7 @@ def light(message_service, payload):
 
 def server_main():
     print("Starting the server...")
+    global light_intensity
 
     # init MQTT client
     message_service = MessageService(server_logger, user=user, password=password, server_ip=server_ip, port=int(port))
@@ -85,9 +87,9 @@ def server_main():
                     brightness=payload.get("brightness"),
                 )
 
-                if values.brightness >= 50 and not switch_from_ui:
+                if values.brightness >= light_intensity and not switch_from_ui:
                     light(message_service, "light off")
-                elif values.brightness < 50 and not switch_from_ui:
+                elif values.brightness < light_intensity and not switch_from_ui:
                     light(message_service, "light on")
 
 

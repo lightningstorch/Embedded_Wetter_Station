@@ -34,12 +34,12 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 
 
 ## Software Components
-| Betriebssystem        | Beschreibung                                                                                                                                                |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Raspberry Pi OS       | 32-Bit, Lite oder Desktop                                                                                                                                    |
-| Programmiersprache    | Python 3.9+                                                                                                                                                 |
-| Bibliotheken          | paho-mqtt (Client)<br>adafruit-circuitpython-dht<br>sense-hat (für Sense HAT)<br>envirophat<br>streamlit (für das UI)<br>pydantic (für Typen/Modelle im UI)<br>sqlite3 (für Datenbank) |
-| MQTT                  | Mosquitto (Broker, Version ≥ 2.0)<br>Konfiguration unter `/etc/mosquitto/mosquitto.conf`<br>`sensor/outdoor1` (Sense HAT)<br>`sensor/outdoor2` (Enviro pHAT)<br>`ui/sensor_data` (gebündelt, für UI)<br>`sensors/light` (Steuerung für Licht) |
+| Betriebssystem        | Beschreibung                                                                                                                                                                                                                         |
+| --------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Raspberry Pi OS       | 64/32-Bit, Lite oder Desktop                                                                                                                                                                                                         |
+| Programmiersprache    | Python 3.13+                                                                                                                                                                                                                         |
+| Bibliotheken          | paho-mqtt (Client)<br>adafruit-circuitpython-dht<br>sense-hat (für Sense HAT)<br>envirophat<br>streamlit (für das UI)<br>pydantic (für Typen/Modelle im UI)<br>sqlite3 (für Datenbank)                                               |
+| MQTT                  | Mosquitto (Broker, Version ≥ 2.0)<br>Konfiguration unter `/etc/mosquitto/mosquitto.conf`<br>`sensor/pi4` (Sense HAT)<br>`sensor/zero` (Enviro pHAT)<br>`ui/sensor_data` (gebündelt, für UI)<br>`sensors/light` (Steuerung für Licht) |
 
 ---
 

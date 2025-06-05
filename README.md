@@ -92,7 +92,8 @@ Edit and save (Ctrl + O, Enter, Ctrl + X)
 
 The program can now be started
 ```text
-python3 ~/Embedded_Wetter_Station/main.py
+cd Embedded_Wetter_Station
+python3 main.py
 ```
 
 
@@ -138,7 +139,8 @@ Edit and save (Ctrl + O, Enter, Ctrl + X)
 
 The program can now be started
 ```text
-python3 ~/Embedded_Wetter_Station/main.py
+cd Embedded_Wetter_Station
+python3 main.py
 ```
 
 
@@ -185,7 +187,8 @@ Edit and save (Ctrl + O, Enter, Ctrl + X)
 
 The program can now be started
 ```text
-python3 ~/Embedded_Wetter_Station/main.py
+cd Embedded_Wetter_Station
+python3 main.py
 ```
 
 

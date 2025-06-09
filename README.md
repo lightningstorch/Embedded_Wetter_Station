@@ -26,7 +26,7 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 | Modell/Typ                                 | Beschreibung                                                                                                                           | Anzahl |
 |--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|-------:|
 | Raspberry PI 4                             | Outdoor Computer with sensor hat                                                                                                       |      1 |
-| Raspberry PI Zero                          | Outdoor Computer with sensor hat2                                                                                                      |      1 |
+| Raspberry PI Zero                          | Outdoor Computer with enviro hat                                                                                                     |      1 |
 | Raspberry PI 3 Model B                     | Server mit MQTT Broker and Server program                                                                                              |      1 |
 | Raspberry PI Camera Boad v2 - 8 Megapixels | Transmission of a livestream https://www.adafruit.com/product/3099                                                                     |      1 |
 | Raspberry Pi Sense HAT                     | Sensor Hat with LEDs, pressure, humidity, temperature  https://www.adafruit.com/product/2738                                           |      1 |

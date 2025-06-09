@@ -23,7 +23,7 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 
 
 ## Hardware Components
-| Modell/Typ                                 | Beschreibung                                                                                                                           | Anzahl |
+| Model/Type                                 | Description                                                                                                                           | Amount |
 |--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|-------:|
 | Raspberry PI 4                             | Outdoor Computer with sensor hat                                                                                                       |      1 |
 | Raspberry PI Zero                          | Outdoor Computer with enviro hat                                                                                                     |      1 |

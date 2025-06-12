@@ -38,7 +38,7 @@ Raspberry Pi devices, with one device acting as a server and MQTT-Broker.
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Raspberry Pi OS      | 64/32-Bit, Lite or Desktop                                                                                                                                                                                                                         |
 | Programming Language | Python 3.13+                                                                                                                                                                                                                                       |
-| Library's            | paho-mqtt (Client)<br>adafruit-circuitpython-dht<br>sense-hat (for Sense HAT)<br>envirophat<br>streamlit (for the UI)<br>pydantic (for data classes (excluding PI Zero v1)<br>sqlite3 (for Database) <br> Flask and opencv-python (for Camera API) |
+| Library's            | paho-mqtt (Client)<br>adafruit-circuitpython-dht<br>sense-hat (for Sense HAT)<br>envirophat<br>streamlit (for the UI)<br>pydantic (for data classes (excluding PI Zero v1)<br>SQLAlchemy (for Database) <br> Flask and opencv-python (for Camera API) |
 | MQTT                 | Mosquitto (Broker, Version ≥ 2.0)<br>Configuration under `/etc/mosquitto/mosquitto.conf`<br>`sensor/pi4` (Sense HAT)<br>`sensor/zero` (Enviro pHAT)<br>`ui/sensor_data` (bundled, for UI)<br>`sensors/light` (for light control)                 |
 
 ---

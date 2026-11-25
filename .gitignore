@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Runtime data
+logs/
+*.db
+
+# Local configuration with MQTT credentials (copy config.example.ini to config.ini)
+config.ini

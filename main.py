@@ -1,29 +1,31 @@
+"""
+Entry point for all four parts of the weather station.
+The role is passed as the first argument: server, pi4, zero or ui.
+Without an argument the Streamlit UI starts, so `streamlit run main.py` keeps working.
+"""
+import sys
 
-def main():
-    #program = "server_main"
-    #program = "pi4_main"
-    #program = "zero_main"
-    program = "ui_main"
+ROLES = ("server", "pi4", "zero", "ui")
 
-    match program:
-        case "pi4_main":
+
+def main(role: str) -> None:
+    """Starts the program for the given role."""
+    match role:
+        case "pi4":
             from pi4.pi4_main import pi4_main
             pi4_main()
-        case "server_main":
+        case "server":
             from server_pi3.server_main import server_main
             server_main()
-        case "zero_main":
+        case "zero":
             from pi_zero.zero_main import zero_main
             zero_main()
-        case "ui_main":
+        case "ui":
             from ui.app import app
             app()
         case _:
-            print("Program not found")
+            sys.exit(f"Unknown role '{role}'. Use one of: {', '.join(ROLES)}")
+
 
 if __name__ == "__main__":
-    main()
-
-
-
-
+    main(sys.argv[1] if len(sys.argv) > 1 else "ui")
